@@ -205,7 +205,7 @@ st.markdown("""
 </div>
 
 <div class="call-box">
-    <a href="tel:010-3872-0031">🚨 대표 이곤희 : 010-1234-5678</a>
+    <a href="tel:010-3872-0031">🚨 대표 이곤희 : 010-3872-0031</a>
 </div>
 """, unsafe_allow_html=True)
 
