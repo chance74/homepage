@@ -12,18 +12,16 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# 2. 커스텀 CSS 스타일링 (구버전 Streamlit 호환 + 테두리 박스 디자인)
+# 2. 커스텀 CSS 스타일링
 # -----------------------------------------------------------------------------
 st.markdown("""
 <style>
-    /* 전체 배경 및 기본 폰트 설정 */
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
     
     html, body, [class*="css"] {
         font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
     }
     
-    /* 히어로 배너 스타일 */
     .hero-banner {
         background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
         color: white;
@@ -46,7 +44,6 @@ st.markdown("""
         font-weight: 400;
     }
 
-    /* 구버전 container(border=True) 대체용 카드 박스 CSS */
     .custom-card {
         border: 1px solid #e2e8f0;
         border-radius: 10px;
@@ -56,7 +53,6 @@ st.markdown("""
         box-shadow: 0 2px 5px rgba(0,0,0,0.03);
     }
     
-    /* 사이드바 배경 스타일링 */
     section[data-testid="stSidebar"] {
         background-color: #f8fafc;
     }
@@ -86,7 +82,6 @@ with st.sidebar:
 # 4. 메인 화면 - 회사 소개
 # -----------------------------------------------------------------------------
 if menu == "회사 소개":
-    # 히어로 배너
     st.markdown("""
     <div class="hero-banner">
         <div class="hero-title">⚓ (주)광명기전</div>
@@ -97,10 +92,11 @@ if menu == "회사 소개":
     col1, col2 = st.columns([1.1, 1], gap="large")
     
     with col1:
+        # 최신 버전에 맞춰 use_container_width=True 로 지정
         st.image(
             "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80", 
             caption="광명기전 선박 전장 시공 및 수리 현장", 
-            use_column_width=True
+            use_container_width=True
         )
         
     with col2:
@@ -113,7 +109,6 @@ if menu == "회사 소개":
         염해와 진동이 극심한 해양 환경 속에서도 완벽하게 작동할 수 있도록 **엄격한 안전 기준과 정밀한 시공**을 약속드립니다.
         """)
         
-        # 핵심 강점 박스 (HTML/CSS 적용)
         st.markdown("""
         <div class="custom-card">
             <h4 style="margin-top:0;">💡 광명기전의 핵심 경쟁력</h4>
