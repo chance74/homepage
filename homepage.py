@@ -29,7 +29,7 @@ if hasattr(st, "dialog"):
         notice_dialog()
 
 # -----------------------------------------------------------------------------
-# 3. 세션 상태 (페이지 이동) - [오시는 길]을 [출장 예약] 앞으로 순서 변경
+# 3. 세션 상태 (페이지 이동)
 # -----------------------------------------------------------------------------
 if "page_idx" not in st.session_state:
     st.session_state["page_idx"] = 0
@@ -45,142 +45,164 @@ def prev_page():
         st.session_state["page_idx"] -= 1
 
 # -----------------------------------------------------------------------------
-# 4. 커스텀 CSS (어두운 배너 & 지마켓 산스 타이틀 & 폰트 스타일)
+# 4. 하이엔드 프리미엄 커스텀 CSS (딥 네이비 & 프리미엄 골드 앰버)
 # -----------------------------------------------------------------------------
 st.markdown("""
 <style>
-    /* 웹폰트 불러오기: 에스코어 드림 & 지마켓 산스 */
-    @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff');
-    @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7Bold.woff');
+    /* 웹폰트 불러오기 */
+    @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff');
+    @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff');
     @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff');
     
+    /* 앱 바탕: 럭셔리 소프트 Slate Gray */
     .stApp {
-        background-color: #f4f7fb;
+        background: #f1f5f9;
     }
 
     html, body, [class*="css"], .stMarkdown, button, input, select {
-        font-family: 'S-CoreDream-5Medium', -apple-system, BlinkMacSystemFont, sans-serif !important;
-        letter-spacing: -0.3px;
+        font-family: 'S-CoreDream-4Regular', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        letter-spacing: -0.4px;
     }
 
     h1, h2, h3, h4 {
-        font-family: 'S-CoreDream-7Bold', sans-serif !important;
+        font-family: 'S-CoreDream-6Bold', sans-serif !important;
     }
 
     .block-container {
-        padding-top: 3.2rem !important;
+        padding-top: 2.8rem !important;
         padding-bottom: 2rem !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        padding-left: 1.2rem !important;
+        padding-right: 1.2rem !important;
     }
 
-    /* 어두운 계열의 메인 배너 스타일 */
+    /* 럭셔리 메인 히어로 배너 (딥 해양 네이비 + 메탈릭 골드 악센트) */
     .hero-banner {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        background: linear-gradient(145deg, #0b1329 0%, #1e293b 70%, #0f172a 100%);
         color: #ffffff;
-        padding: 2rem 1.2rem;
-        border-radius: 20px;
+        padding: 2.2rem 1.5rem;
+        border-radius: 22px;
         margin-bottom: 1.2rem;
         text-align: center;
-        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
-        border: 1px solid #334155;
+        box-shadow: 0 12px 30px rgba(11, 19, 41, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
     }
     
-    /* (주)광명기전 전용 굵고 인상적인 Gmarket Sans 폰트 및 크기 확대 */
     .hero-title {
         font-family: 'GmarketSansBold', sans-serif !important;
-        font-size: 2.2rem;
-        margin-bottom: 0.5rem;
-        color: #f8fafc;
+        font-size: 2.3rem;
+        margin-bottom: 0.6rem;
+        background: linear-gradient(120deg, #ffffff 30%, #fbbf24 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         letter-spacing: -0.5px;
     }
     
     .hero-subtitle {
         font-size: 0.95rem;
-        color: #94a3b8;
-        line-height: 1.4;
+        color: #cbd5e1;
+        line-height: 1.5;
+        font-weight: 300;
     }
 
-    /* 긴급 전화 박스 */
+    /* 프리미엄 긴급 출장 박스 (앰버 골드 럭셔리 카드) */
     .call-box {
-        background: #ffffff;
-        border: 2px solid #e0f2fe;
-        border-radius: 16px;
-        padding: 0.9rem;
+        background: linear-gradient(135deg, #fffbe3 0%, #fef3c7 100%);
+        border: 1.5px solid #fde68a;
+        border-radius: 18px;
+        padding: 1.1rem;
         text-align: center;
-        margin-bottom: 1.2rem;
-        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.06);
+        margin-bottom: 1.4rem;
+        box-shadow: 0 4px 16px rgba(245, 158, 11, 0.12);
     }
 
     .call-box a {
-        font-size: 1.15rem;
-        font-family: 'S-CoreDream-7Bold', sans-serif;
-        color: #0284c7;
+        font-size: 1.18rem;
+        font-family: 'GmarketSansBold', sans-serif;
+        color: #b45309;
         text-decoration: none;
+        letter-spacing: 0.2px;
     }
 
-    /* 카드 스타일 */
+    /* 고급 하이엔드 카드 (Hover 입체감 및 딥 보더) */
     .custom-card {
         background: #ffffff;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 18px;
-        padding: 1.4rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 1.5rem;
         margin-bottom: 1.2rem;
-        box-shadow: 0 6px 18px rgba(148, 163, 184, 0.08);
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+        transition: all 0.25s ease-in-out;
+    }
+
+    .custom-card:hover {
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+        border-color: #cbd5e1;
     }
 
     .custom-card h3, .custom-card h4 {
         font-size: 1.2rem;
-        color: #0284c7;
-        margin-bottom: 0.6rem;
+        color: #0f172a;
+        margin-bottom: 0.8rem;
+        border-bottom: 2px solid #f1f5f9;
+        padding-bottom: 0.5rem;
         word-break: keep-all;
     }
 
     .custom-card p, .custom-card li {
         font-size: 0.95rem;
-        color: #334155;
-        line-height: 1.6;
+        color: #475569;
+        line-height: 1.65;
         word-break: keep-all;
     }
 
-    /* 탭 스타일 */
+    /* 세련된 럭셔리 탭 */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
+        gap: 6px;
         background-color: #e2e8f0;
-        padding: 5px;
-        border-radius: 14px;
-        margin-bottom: 1rem;
+        padding: 6px;
+        border-radius: 16px;
+        margin-bottom: 1.2rem;
     }
     
     .stTabs [data-baseweb="tab"] {
-        height: 44px;
-        border-radius: 10px;
+        height: 46px;
+        border-radius: 12px;
         color: #64748b;
-        font-size: 0.9rem;
+        font-size: 0.92rem;
         background-color: transparent;
         border: none !important;
-        padding: 0 12px;
+        padding: 0 14px;
+        font-family: 'S-CoreDream-6Bold', sans-serif !important;
     }
 
     .stTabs [aria-selected="true"] {
-        background-color: #ffffff !important;
-        color: #0284c7 !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        background-color: #0f172a !important;
+        color: #fbbf24 !important;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
     }
 
-    /* 버튼 스타일 */
+    /* 버튼 스타일 (Primary: 딥 네이비 + 골드 텍스트) */
     .stButton > button {
-        border-radius: 12px !important;
-        padding: 0.6rem 1rem !important;
-        font-family: 'S-CoreDream-7Bold', sans-serif !important;
+        border-radius: 14px !important;
+        padding: 0.75rem 1rem !important;
+        font-family: 'S-CoreDream-6Bold', sans-serif !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .stButton > button[kind="primary"] {
+        background-color: #0f172a !important;
+        color: #fbbf24 !important;
+        border: none !important;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2) !important;
     }
 
     @media (max-width: 768px) {
         .block-container {
-            padding-top: 3.5rem !important;
+            padding-top: 3rem !important;
         }
         .hero-title {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
         }
     }
 </style>
@@ -196,16 +218,16 @@ def render_image(image_url, caption=""):
         st.image(image_url, caption=caption, use_column_width=True)
 
 # -----------------------------------------------------------------------------
-# 6. 어두운 배경의 헤더 배너 & 대형 상호명 타이틀
+# 6. 헤더 배너 & 긴급 전화 (하이엔드 스타일)
 # -----------------------------------------------------------------------------
 st.markdown("""
 <div class="hero-banner">
     <div class="hero-title">⚓ (주)광명기전</div>
-    <div class="hero-subtitle">해양 환경에 최적화된 선박 전기 설비 & 24시간 출장 수리</div>
+    <div class="hero-subtitle">해양 환경에 최적화된 선박 전기 설비 & 24시간 긴급 출장 수리</div>
 </div>
 
 <div class="call-box">
-    <a href="tel:010-3872-0031">🚨 대표 이곤희 : 010-3872-0031</a>
+    <a href="tel:010-3872-0031">📞 대표 이곤희: 010-3872-0031</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -264,7 +286,7 @@ with tabs[1]:
     </div>
     """, unsafe_allow_html=True)
 
-# --- PAGE 3: 오시는 길 & 문의 (순서 변경 적용) ---
+# --- PAGE 3: 오시는 길 & 문의 ---
 with tabs[2]:
     st.subheader("📞 오시는 길 & 업체 정보")
     st.markdown("""
@@ -273,17 +295,17 @@ with tabs[2]:
         <p><b>주요 사업:</b> 선박 전기 공사 / 전장 수리 / 제어반 제작</p>
         <p><b>주소:</b> 울산 남구 장생포고래로213번길 (예시 주소)</p>
         <p><b>대표 전화:</b> 051-123-4567</p>
-        <p><b>긴급 출장:</b> <a href="tel:010-1234-5678" style="color:#0284c7;">010-1234-5678</a></p>
+        <p><b>긴급 출장:</b> <a href="tel:010-1234-5678" style="color:#b45309; font-weight:bold;">010-1234-5678</a></p>
         <p style="margin-bottom:0;"><b>이메일:</b> contact@gwangmyeong.com</p>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("#### 🗺️ **위치 안내**")
     
-    # OpenStreetMap 지도 (높이 250px 지정)
+    # OpenStreetMap 지도 (높이 250px 모바일 완벽 대응)
     lat, lon = 35.0912, 129.0436
     map_html = f"""
-    <div style="width: 100%; height: 250px; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+    <div style="width: 100%; height: 250px; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
         <iframe 
             width="100%" 
             height="250" 
