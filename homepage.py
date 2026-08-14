@@ -205,7 +205,7 @@ st.markdown("""
 </div>
 
 <div class="call-box">
-    <a href="tel:010-1234-5678">🚨 24시간 긴급 출장 전화: 010-1234-5678</a>
+    <a href="tel:010-3872-0031">🚨 대표 이곤희 : 010-1234-5678</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -271,7 +271,7 @@ with tabs[2]:
     <div class="custom-card">
         <p><b>상호명:</b> (주)광명기전</p>
         <p><b>주요 사업:</b> 선박 전기 공사 / 전장 수리 / 제어반 제작</p>
-        <p><b>주소:</b> 부산광역시 영도구 남항서로 (예시 주소)</p>
+        <p><b>주소:</b> 울산 남구 장생포고래로213번길 (예시 주소)</p>
         <p><b>대표 전화:</b> 051-123-4567</p>
         <p><b>긴급 출장:</b> <a href="tel:010-1234-5678" style="color:#0284c7;">010-1234-5678</a></p>
         <p style="margin-bottom:0;"><b>이메일:</b> contact@gwangmyeong.com</p>
